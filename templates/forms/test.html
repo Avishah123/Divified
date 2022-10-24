@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%load crispy_forms_tags %} 
+
+{% load widget_tweaks %}
+{% block content %}
+
+<main>
+	<div class="box">
+	  <div class="inner-box">
+		<div class="forms-wrap">
+		 
+
+		  <form method="POST" autocomplete="off" class="sign-in-form">
+			{% csrf_token %}
+			
+			
+
+			<body>
+	
+    <h2>Enter the stock you want to add below </h2>
+	<form method="POST" autocomplete="on">
+        {% csrf_token %}
+        
+        
+		{{ form.stock_ticker|attr:"autocomplete: on"|append_attr:"id :tags"|append_attr:"placeholder : Stock Name" }}
+        
+        
+        
+        <script>
+            $( function() {
+                var availableTags = [
+                    {% for language in languages %}
+                        "{{language.stock_ticker}}",
+                    {% endfor %}
+                ];
+                $( "#tags" ).autocomplete({
+                source: availableTags
+                });
+            } );
+            </script>
+
+			
+			  
+
+			  
+
+
+
+			  
+
+			  
+			  <button type="submit" class="sign-btn">Add Stock</button>
+
+			  
+			</div>
+		  </form>
+		</div>
+
+		<div class="carousel">
+		  <div class="images-wrapper">
+			<!-- <img src="./img/image1.png" class="image img-1 show" alt="" />
+			<img src="./img/image2.png" class="image img-2" alt="" />
+			<img src="./img/image3.png" class="image img-3" alt="" /> -->
+		  </div>
+
+		  <div class="text-slider">
+			<div class="text-wrap">
+			  <div class="text-group">
+				<h2>Get your dividend alert now</h2>
+			   
+			  </div>
+			</div>
+
+			<div class="bullets">
+			  <span class="active" data-value="1"></span>
+			  
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </main>
+
+  {% endblock %}

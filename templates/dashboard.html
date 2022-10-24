@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%load crispy_forms_tags %} 
+
+{% load widget_tweaks %}
+{% block content %}
+
+
+    <!-- <div class="header">DASHBOARD</div> -->
+    <div class="container " style="height:20vh;margin-top:30px;">
+        <h2 class="text-center">Dashboard</h2><br><br>
+
+        <a href="/" class="btn btn-primary">Back</a><br><br>
+        {% include 'message.html' %}
+        <div class="row">
+            <table class="table table-bordered" style="background-color: white;">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Stock Name</th>
+                    <th scope="col">Dividend Type </th>
+                    <th scope="col">Dividend % </th>                    
+                    <th scope="col">Ex-Dividend Record Date:</th>
+                    <th scope="col">Ex-Dividend Announcement Date: </th>
+                    <th scope="col">Ex-Dividend  Date: </th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for i in stock_ticker %}
+                  <tr>
+                    <td>{{i.id}}</td>                    
+                    <td>{{i.stock_ticker}}</td>
+                    <td>{{i.dividend_type}}</td>
+                    <td>{{i.dividend_percetage}}</td>
+                    <td>{{i.stock_record_date}}</td>
+                    <td>{{i.stock_announcement_date}}</td>
+                    <td>{{i.ex_dividend_date}}</td>
+                    <td><a href={% url 'delete' i.id %} class="btn btn-danger">Delete</a></td>
+                    <td><a href="view/{{i.stock_ticker}}" class="btn btn-danger">Hist</a></td>
+                  </tr>
+                  {% endfor %}
+                  
+                </tbody>
+              </table>
+              
+
+        </div>
+
+
+        <div class="row">
+
+            {% for i in stock_ticker %}
+
+            <div class="col-md-4" >
+
+              <div class="card" style="padding: 10px;margin:10px;" >
+                
+                <div class="card-body">
+                  
+                  <div class="role_name">{{i.stock_ticker}}</div>
+                        
+                        
+                        <div class="film">Dividend Type:{{i.dividend_type}}</div>
+                        <div class="film">Dividend Percentage :{{i.dividend_percetage}}</div>
+                        <div class="film">Dividend Record Date:{{i.stock_record_date}}</div>
+                        
+                        <div class="film">Ex-Dividend Announcement Date:{{i.stock_announcement_date}}</div>
+                        <div class="film">Ex-Dividend  Date:{{i.ex_dividend_date}}</div>
+                  
+                </div>
+              </div>
+            
+        
+            
+        </div>
+        {% endfor %}
+        </div>
+
+       
+    </div>
+    
+
+    
+        
+        
+        
+        
+        
+       
+        
+
+  {% endblock %}

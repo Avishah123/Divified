@@ -1,0 +1,246 @@
+{% load static %}
+
+{%load crispy_forms_tags %} 
+
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Quantum Able Bootstrap 4 Admin Dashboard Template</title>
+	
+
+
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="description" content="codedthemes">
+	<meta name="keywords"
+		  content=", Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+	<meta name="author" content="codedthemes">
+
+	<link rel="shortcut icon" href="{% static 'assets/images/favicon.png'%}" type="image/x-icon">
+		<link rel="icon" href="{% static 'assets/images/favicon.ico'%}" type="image/x-icon">
+	 
+		<!-- Google font-->
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
+	 
+		<!-- themify -->
+		<link rel="stylesheet" type="text/css" href="{% static 'assets/icon/themify-icons/themify-icons.css' %}">
+	 
+		<!-- iconfont -->
+		<link rel="stylesheet" type="text/css" href="{%static 'assets/icon/icofont/css/icofont.css'%}">
+	 
+		<!-- simple line icon -->
+		<link rel="stylesheet" type="text/css" href="{% static 'assets/icon/simple-line-icons/css/simple-line-icons.css'%}">
+	 
+		<!-- Required Fremwork -->
+		<link rel="stylesheet" type="text/css" href="{%static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+	 
+		<!-- Chartlist chart css -->
+		<link rel="stylesheet" href="{%static 'assets/plugins/chartist/dist/chartist.css' %}" type="text/css" media="all">
+	 
+		<!-- Weather css -->
+		<link href="{% static 'assets/css/svg-weather.css'%}" rel="stylesheet">
+	 
+	 
+		<!-- Style.css -->
+		<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
+	 
+		<!-- Responsive.css-->
+		<link rel="stylesheet" type="text/css" href="{%static 'assets/css/responsive.css' %}">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">  
+    </script>  
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">  
+    </script>  
+    
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />  
+
+</head>
+<body>
+	<header class="main-header-top hidden-print">
+		<h1 class="logo me-auto"><a href="/">DIVIFIED</a></h1>
+		<nav class="navbar navbar-static-top">
+		   <!-- Sidebar toggle button-->
+		   <a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
+		   <ul class="top-nav lft-nav">
+						   
+			  
+			  
+		   </ul>
+		   <!-- Navbar Right Menu-->
+		   <div class="navbar-custom-menu f-right">
+			 
+
+			  <ul class="top-nav">
+				 
+				 
+			  </ul>
+
+			  <!-- search -->
+			  <div id="morphsearch" class="morphsearch">
+				 
+				 
+				 <!-- /morphsearch-content -->
+				 <span class="morphsearch-close"><i class="icofont icofont-search-alt-1"></i></span>
+			  </div>
+			  <!-- search end -->
+		   </div>
+		</nav>
+	 </header>
+	 <aside class="main-sidebar hidden-print ">
+		<section class="sidebar" id="sidebar-scroll">
+		   <!-- Sidebar Menu-->
+		   <ul class="sidebar-menu">
+			 <li class="treeview">
+			   <a class="" href="/">
+				  <i class="icon-speedometer"></i><span> Home</span>
+			   </a>                
+			</li>
+			  <li class="treeview">
+				 <a class="waves-effect waves-dark" href="/dashboard">
+					<i class="icon-speedometer"></i><span> Dashboard</span>
+				 </a>                
+			  </li>
+			  <li class="treeview">
+			   <a class="waves-effect waves-dark" href="/stock">
+				  <i class="icon-speedometer"></i><span>Add Stock</span>
+			   </a>                
+			</li>
+			<li class="treeview">
+			  <a class="waves-effect waves-dark" href="/enduser">
+				 <i class="icon-speedometer"></i><span>Register</span>
+			  </a>                
+		   </li>
+		   <li class="treeview">
+			  <a class="waves-effect waves-dark" href="/login">
+				 <i class="icon-speedometer"></i><span>Login</span>
+			  </a>                
+		   </li>
+			<li class="treeview">
+			  <a class="waves-effect waves-dark" href="/dividend-analysis">
+				 <i class="icon-speedometer"></i><span>Dividend Analysis</span>
+			  </a>                
+		   </li>
+		   <li class="treeview">
+			<a class="waves-effect waves-dark" href="/api/new">
+			   <i class="icon-speedometer"></i><span>Rest API</span>
+			</a>                
+		 </li>
+
+		   </ul>
+		</section>
+	  </aside>
+	 <br><br>
+<section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+	<!-- Container-fluid starts -->
+	<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-sm-12">
+				<div class="login-card card-block">
+					<form method="POST" autocomplete="off" class="sign-in-form">
+						{% csrf_token %}
+						<div class="text-center">
+							<img src="assets/images/logo-black.png" alt="logo">
+						</div>
+						<h3 class="text-center txt-primary">
+							Add Stocks to your portfolio
+						</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="md-input-wrapper">
+									{{ form.stock_ticker|attr:"autocomplete: on"|append_attr:"id :tags"|append_attr:"class=md-form-control"|append_attr:"placeholder : Stock Name" }}
+								</div>
+							</div>
+							
+							<div class="col-sm-6 col-xs-12">
+							
+								</div>
+							
+						</div>
+						<div class="row">
+							<div class="col-xs-10 offset-xs-1">
+								<button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Add</button>
+							</div>
+						</div>
+						<!-- </div> -->
+					</form>
+					<!-- end of form -->
+				</div>
+				<!-- end of login-card -->
+			</div>
+			<!-- end of col-sm-12 -->
+		</div>
+		<!-- end of row -->
+	</div>
+	<!-- end of container-fluid -->
+</section>
+
+<script src="{% static 'assets/plugins/Jquery/dist/jquery.min.js'%}"></script>
+<script src="{% static 'assets/plugins/jquery-ui/jquery-ui.min.js'%}"></script>
+<script src="{% static 'assets/plugins/tether/dist/js/tether.min.js'%}"></script>
+
+<!-- Required Fremwork -->
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js'%}"></script>
+
+<!-- Scrollbar JS-->
+<script src="{% static 'assets/plugins/jquery-slimscroll/jquery.slimscroll.js'%}"></script>
+<script src="{% static 'assets/plugins/jquery.nicescroll/jquery.nicescroll.min.js'%}"></script>
+
+<!--classic JS-->
+<script src="assets/plugins/classie/classie.js'%}"></script>
+
+<!-- notification -->
+<script src="{% static 'assets/plugins/notification/js/bootstrap-growl.min.js'%}"></script>
+
+<!-- Sparkline charts -->
+<script src="{% static 'assets/plugins/jquery-sparkline/dist/jquery.sparkline.js'%}"></script>
+
+<!-- Counter js  -->
+<script src="{% static 'assets/plugins/waypoints/jquery.waypoints.min.js'%}"></script>
+<script src="{% static 'assets/plugins/countdown/js/jquery.counterup.js'%}"></script>
+
+<!-- Echart js -->
+<script src="{% static 'assets/plugins/charts/echarts/js/echarts-all.js'%}"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+<!-- custom js -->
+<script type="text/javascript" src="{% static 'assets/js/main.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'assets/pages/dashboard.js'%}"></script>
+<script type="text/javascript" src="{% static 'assets/pages/elements.js'%}"></script>
+<script src="{% static 'assets/js/menu.min.js'%}"></script>
+<script>
+	$( function() {
+	  var availableTags = [
+		  {% for language in languages %}
+			  "{{language.symbol}}",
+		  {% endfor %}
+	  ];
+	  $( "#tags" ).autocomplete({
+		source: availableTags
+	  });
+	} );
+	</script>
+
+<script>
+var $window = $(window);
+var nav = $('.fixed-button');
+$window.scroll(function(){
+ if ($window.scrollTop() >= 200) {
+	nav.addClass('active');
+ }
+ else {
+	nav.removeClass('active');
+ }
+});
+</script>
+
+
+
+</body>
+</html>
